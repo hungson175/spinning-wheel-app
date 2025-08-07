@@ -89,7 +89,7 @@ function App() {
             className={`tab ${activeTab === 'slot' ? 'active' : ''}`}
             onClick={() => setActiveTab('slot')}
           >
-            Quay Số
+            Game
           </button>
           <button 
             className={`tab ${activeTab === 'input' ? 'active' : ''}`}
