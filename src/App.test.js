@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders Lucky Draw Event title', () => {
+test('renders Trio Lê Gia Mao Trung title', () => {
   render(<App />);
-  const titleElement = screen.getByText(/Lucky Draw Event/i);
+  const titleElement = screen.getByText(/Trio Lê Gia Mao Trung/i);
   expect(titleElement).toBeInTheDocument();
 });
 

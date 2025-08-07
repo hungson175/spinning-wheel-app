@@ -66,7 +66,7 @@ function App() {
       <div className="app-container">
         <div className="app-header">
           <h1 className={`app-title ${theme === 'corporate' ? 'professional' : ''}`}>
-            {theme === 'corporate' ? 'Lucky Draw Event' : '🎰 Lucky Draw Event 🎰'}
+            {theme === 'corporate' ? 'Trio Lê Gia Mao Trung' : '🎰 Trio Lê Gia Mao Trung 🎰'}
           </h1>
           <button 
             className="theme-toggle"

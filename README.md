@@ -1,4 +1,4 @@
-# Spinning Wheel Number Generator
+# Trio Lê Gia Mao Trung - Lucky Draw App
 
 A React-based spinning wheel application for generating random numbers with customizable settings.
 
