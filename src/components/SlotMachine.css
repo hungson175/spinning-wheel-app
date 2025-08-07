@@ -26,26 +26,7 @@
   transform: perspective(1000px) rotateX(5deg);
 }
 
-.slot-frame::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50px;
-  width: 40px;
-  height: 120%;
-  background: linear-gradient(90deg, 
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transform: skewX(-20deg);
-  animation: shine 3s infinite;
-}
-
-@keyframes shine {
-  0% { left: -50px; }
-  100% { left: calc(100% + 50px); }
-}
+/* Removed shine effect */
 
 .slot-reels {
   display: flex;
@@ -240,21 +221,7 @@
   overflow: hidden;
 }
 
-.spin-button::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-  animation: rotate-light 3s linear infinite;
-}
-
-@keyframes rotate-light {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+/* Removed rotating light effect */
 
 .spin-button:hover:not(:disabled) {
   transform: translateY(-3px) scale(1.05);
