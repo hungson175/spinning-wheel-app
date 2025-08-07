@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RotateCcw } from 'lucide-react';
 import SlotMachine from './components/SlotMachine';
 import DataInput from './components/DataInput';
 import Notification from './components/Notification';
@@ -53,6 +54,11 @@ function App() {
     setSelectedNumber(null);
   };
 
+  const handleReset = () => {
+    // Reload the page to reset everything
+    window.location.reload();
+  };
+
   return (
     <div className={`app theme-${theme}`}>
       <Confetti active={showConfetti} />
@@ -65,6 +71,15 @@ function App() {
       )}
       <div className="app-container">
         <div className="app-header">
+          <button 
+            className="reset-button"
+            onClick={handleReset}
+            aria-label="Reset application"
+            title="Reset toàn bộ ứng dụng"
+          >
+            <RotateCcw size={20} />
+            Reset
+          </button>
           <h1 className={`app-title ${theme === 'corporate' ? 'professional' : ''}`}>
             {theme === 'corporate' ? 'Trio Lê Gia Mao Trung' : '🎰 Trio Lê Gia Mao Trung 🎰'}
           </h1>

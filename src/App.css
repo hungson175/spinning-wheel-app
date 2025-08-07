@@ -83,6 +83,45 @@ body {
   background-clip: text;
 }
 
+.reset-button {
+  position: absolute;
+  left: 0;
+  padding: 12px 24px;
+  background: rgba(248, 249, 250, 0.1);
+  color: #f8f9fa;
+  border: 2px solid rgba(255, 167, 38, 0.4);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 8px 32px rgba(255, 167, 38, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reset-button:hover {
+  background: rgba(255, 167, 38, 0.15);
+  transform: translateY(-2px) rotate(-360deg);
+  border-color: rgba(255, 167, 38, 0.6);
+  box-shadow: 
+    0 12px 40px rgba(255, 167, 38, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.reset-button svg {
+  transition: transform 0.6s ease;
+}
+
+.reset-button:hover svg {
+  transform: rotate(-360deg);
+}
+
 .theme-toggle {
   position: absolute;
   right: 0;
@@ -251,8 +290,20 @@ body {
     padding: 15px;
   }
 
+  .app-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
   .app-title {
     font-size: 40px;
+  }
+
+  .reset-button,
+  .theme-toggle {
+    position: static;
+    margin: 0 auto;
+    width: 180px;
   }
 
   .tabs {

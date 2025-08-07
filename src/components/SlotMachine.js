@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { RotateCcw } from 'lucide-react';
 import './SlotMachine.css';
 
 const SlotMachine = ({ selectedNumber, isSpinning, onSpin, remainingCount, spinHistory }) => {
