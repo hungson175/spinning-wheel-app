@@ -13,7 +13,6 @@ function App() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinHistory, setSpinHistory] = useState([]);
   const [notification, setNotification] = useState(null);
-  const [theme, setTheme] = useState('corporate'); // 'fun' or 'corporate'
   const [showConfetti, setShowConfetti] = useState(false);
 
   const showNotification = (message, type = 'info') => {
@@ -60,7 +59,7 @@ function App() {
   };
 
   return (
-    <div className={`app theme-${theme}`}>
+    <div className="app theme-corporate">
       <Confetti active={showConfetti} />
       {notification && (
         <Notification
@@ -80,16 +79,9 @@ function App() {
             <RotateCcw size={20} />
             Reset
           </button>
-          <h1 className={`app-title ${theme === 'corporate' ? 'professional' : ''}`}>
-            {theme === 'corporate' ? 'Trio Lê Gia Mao Trung' : '🎰 Trio Lê Gia Mao Trung 🎰'}
+          <h1 className="app-title professional">
+            Trio Lê Gia Mao Trung
           </h1>
-          <button 
-            className="theme-toggle"
-            onClick={() => setTheme(theme === 'fun' ? 'corporate' : 'fun')}
-            aria-label="Toggle theme"
-          >
-            {theme === 'fun' ? '🏢 Corporate' : '🎉 Fun'}
-          </button>
         </div>
         
         <div className="tabs">
