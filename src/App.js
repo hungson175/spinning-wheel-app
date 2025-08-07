@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import SlotMachine from './components/SlotMachine';
 import DataInput from './components/DataInput';
+import Notification from './components/Notification';
+import Confetti from './components/Confetti';
 import './App.css';
 
 function App() {
@@ -9,10 +11,17 @@ function App() {
   const [selectedNumber, setSelectedNumber] = useState(null);
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinHistory, setSpinHistory] = useState([]);
+  const [notification, setNotification] = useState(null);
+  const [theme, setTheme] = useState('fun'); // 'fun' or 'corporate'
+  const [showConfetti, setShowConfetti] = useState(false);
+
+  const showNotification = (message, type = 'info') => {
+    setNotification({ message, type });
+  };
 
   const handleSpin = () => {
     if (customerNumbers.length === 0) {
-      alert('Vui lòng nhập danh sách số khách hàng trước!');
+      showNotification('Vui lòng nhập danh sách số khách hàng trước!', 'warning');
       return;
     }
 
@@ -27,6 +36,11 @@ function App() {
     setTimeout(() => {
       setIsSpinning(false);
       setSpinHistory([...spinHistory, winner]);
+      showNotification(`🎉 Chúc mừng số ${winner} đã trúng thưởng!`, 'success');
+      
+      // Show confetti animation
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000);
       
       // Remove the winner from the list (optional)
       const newNumbers = customerNumbers.filter((num, idx) => idx !== randomIndex);
@@ -40,9 +54,28 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className={`app theme-${theme}`}>
+      <Confetti active={showConfetti} />
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
       <div className="app-container">
-        <h1 className="app-title">🎰 Lucky Draw Event 🎰</h1>
+        <div className="app-header">
+          <h1 className={`app-title ${theme === 'corporate' ? 'professional' : ''}`}>
+            {theme === 'corporate' ? 'Lucky Draw Event' : '🎰 Lucky Draw Event 🎰'}
+          </h1>
+          <button 
+            className="theme-toggle"
+            onClick={() => setTheme(theme === 'fun' ? 'corporate' : 'fun')}
+            aria-label="Toggle theme"
+          >
+            {theme === 'fun' ? '🏢 Corporate' : '🎉 Fun'}
+          </button>
+        </div>
         
         <div className="tabs">
           <button 

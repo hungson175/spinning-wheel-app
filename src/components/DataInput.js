@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { Upload, FileText, Save, Trash2 } from 'lucide-react';
+import ConfirmDialog from './ConfirmDialog';
 import './DataInput.css';
 
 const DataInput = ({ customerNumbers, onDataUpdate }) => {
   const [textInput, setTextInput] = useState(customerNumbers.join('\n'));
   const [uploadStatus, setUploadStatus] = useState('');
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const fileInputRef = useRef(null);
 
   const handleFileUpload = (event) => {
@@ -40,12 +42,17 @@ const DataInput = ({ customerNumbers, onDataUpdate }) => {
   };
 
   const handleClearData = () => {
+    setShowConfirmDialog(true);
+  };
+
+  const confirmClearData = () => {
     setTextInput('');
     onDataUpdate([]);
     setUploadStatus('Đã xóa dữ liệu');
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
+    setShowConfirmDialog(false);
   };
 
   const handleTextChange = (e) => {
@@ -56,7 +63,17 @@ const DataInput = ({ customerNumbers, onDataUpdate }) => {
   const currentCount = textInput.split('\n').filter(line => line.trim()).length;
 
   return (
-    <div className="data-input-container">
+    <>
+      <ConfirmDialog
+        isOpen={showConfirmDialog}
+        title="Xác nhận xóa"
+        message="Bạn có chắc chắn muốn xóa toàn bộ danh sách số khách hàng?"
+        onConfirm={confirmClearData}
+        onCancel={() => setShowConfirmDialog(false)}
+        confirmText="Xóa tất cả"
+        cancelText="Hủy"
+      />
+      <div className="data-input-container">
       <div className="input-section">
         <div className="input-header">
           <h2>Nhập Danh Sách Số Khách Hàng</h2>
@@ -138,6 +155,7 @@ const DataInput = ({ customerNumbers, onDataUpdate }) => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

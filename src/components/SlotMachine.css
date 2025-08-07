@@ -133,6 +133,92 @@
   100% { transform: translateY(-150px); }
 }
 
+/* Mobile Responsiveness Improvements */
+@media (max-width: 768px) {
+  .slot-machine-container {
+    padding: 20px;
+  }
+
+  .slot-frame {
+    padding: 30px;
+    transform: none; /* Remove 3D perspective on mobile */
+  }
+
+  .slot-reels {
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .reel-container {
+    width: 70px;
+    height: 100px;
+  }
+
+  .digit-display {
+    font-size: 48px;
+  }
+
+  .spinning-digit {
+    font-size: 48px;
+    height: 100px;
+  }
+
+  .spin-button {
+    padding: 20px 50px;
+    font-size: 24px;
+  }
+
+  .info-panel {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .remaining-count,
+  .history {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .slot-frame {
+    padding: 20px;
+  }
+
+  .slot-reels {
+    gap: 5px;
+    padding: 15px;
+  }
+
+  .reel-container {
+    width: 60px;
+    height: 90px;
+  }
+
+  .digit-display,
+  .spinning-digit {
+    font-size: 40px;
+  }
+
+  .spin-button {
+    padding: 16px 40px;
+    font-size: 20px;
+    min-height: 56px; /* Ensure 44px+ touch target */
+  }
+
+  .history-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .history-item {
+    min-width: 70px;
+    padding: 8px 12px;
+    font-size: 16px;
+  }
+}
+
 .spin-button {
   padding: 25px 80px;
   font-size: 32px;

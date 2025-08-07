@@ -24,13 +24,45 @@ body {
   margin: 0 auto;
 }
 
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 30px;
+}
+
 .app-title {
   text-align: center;
   color: white;
   font-size: 48px;
-  margin-bottom: 30px;
+  margin: 0;
   text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   animation: glow-title 2s ease-in-out infinite;
+}
+
+.app-title.professional {
+  animation: subtle-glow 4s ease-in-out infinite;
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 0;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 @keyframes glow-title {
@@ -44,6 +76,36 @@ body {
       2px 4px 8px rgba(0, 0, 0, 0.2),
       0 0 30px rgba(255, 255, 255, 0.5);
   }
+}
+
+@keyframes subtle-glow {
+  0%, 100% { 
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  50% { 
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Corporate Theme Styles */
+.app.theme-corporate {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+}
+
+.theme-corporate .slot-frame {
+  background: linear-gradient(145deg, #34495e, #2c3e50);
+}
+
+.theme-corporate .digit-display {
+  color: #3498db;
+}
+
+.theme-corporate .spin-button {
+  background: linear-gradient(145deg, #3498db, #2980b9);
+}
+
+.theme-corporate .tab.active {
+  color: #2c3e50;
 }
 
 .tabs {

@@ -36,11 +36,11 @@ const SlotMachine = ({ selectedNumber, isSpinning, onSpin, remainingCount, spinH
         <div className="slot-frame">
           <div className="slot-reels">
             {displayDigits.map((digit, index) => (
-              <div key={index} className="reel-container">
+              <div key={index} className="reel-container" role="img" aria-label={`Slot reel ${index + 1} showing ${digit}`}>
                 <div className={`reel ${spinning[index] ? 'spinning' : ''}`}>
                   <div className="digit-display">{digit}</div>
                   {spinning[index] && (
-                    <div className="spinning-numbers">
+                    <div className="spinning-numbers" aria-hidden="true">
                       {[...Array(10)].map((_, i) => (
                         <div key={i} className="spinning-digit">{i}</div>
                       ))}
@@ -56,15 +56,20 @@ const SlotMachine = ({ selectedNumber, isSpinning, onSpin, remainingCount, spinH
           className={`spin-button ${isSpinning ? 'spinning' : ''}`}
           onClick={onSpin}
           disabled={isSpinning || remainingCount === 0}
+          aria-label="Start lucky draw spin"
+          aria-describedby="remaining-count"
+          aria-busy={isSpinning}
         >
           {isSpinning ? '🎰 ĐANG QUAY...' : '🎯 QUAY SỐ'}
         </button>
       </div>
 
       <div className="info-panel">
-        <div className="remaining-count">
+        <div className="remaining-count" id="remaining-count">
           <h3>Số lượng còn lại</h3>
-          <div className="count">{remainingCount}</div>
+          <div className="count" aria-live="polite" aria-atomic="true">
+            {remainingCount}
+          </div>
         </div>
 
         {spinHistory.length > 0 && (
