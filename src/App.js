@@ -13,7 +13,7 @@ function App() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [spinHistory, setSpinHistory] = useState([]);
   const [notification, setNotification] = useState(null);
-  const [theme, setTheme] = useState('fun'); // 'fun' or 'corporate'
+  const [theme, setTheme] = useState('corporate'); // 'fun' or 'corporate'
   const [showConfetti, setShowConfetti] = useState(false);
 
   const showNotification = (message, type = 'info') => {
